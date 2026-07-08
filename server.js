@@ -1,3 +1,4 @@
+require("dotenv").config();
 const checkoutRoutes = require("./routes/checkoutRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const wishlistRoutes = require("./routes/wishlistRoutes");
@@ -12,7 +13,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const path = require("path");
 
-dotenv.config();
+
 console.log(process.env.MONGO_URI);
 
 const connectDB = require("./config/db");
@@ -36,7 +37,7 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
     session({
-        secret: "eshop_secret_key",
+        secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
     })
@@ -62,12 +63,14 @@ app.set("view engine", "ejs");
 // Home Route
 
 
-// Start Server
-const PORT = process.env.PORT || 3000;
+// Test Route
 app.get("/hello", (req, res) => {
     res.send("Hello");
 });
 
+// Start Server
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-    console.log(`🚀 Server running at http://localhost:${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
 });
