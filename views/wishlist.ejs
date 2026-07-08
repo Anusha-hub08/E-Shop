@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wishlist</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<%- include("partials/navbar") %>
+
+<div class="wishlist-page">
+
+    <h1>❤️ My Wishlist</h1>
+
+    <% if(products.length === 0){ %>
+
+        <div class="empty-box">
+
+            <h2>Your Wishlist is Empty</h2>
+
+            <p>Add products you love ❤️</p>
+
+            <a href="/" class="continue-btn">
+
+                Continue Shopping
+
+            </a>
+
+        </div>
+
+    <% } else { %>
+
+        <div class="wishlist-grid">
+
+        <% products.forEach(product=>{ %>
+
+            <div class="wishlist-card">
+
+                <img src="<%= product.image %>" alt="<%= product.name %>">
+
+                <div class="wishlist-info">
+
+                    <h2><%= product.name %></h2>
+
+                    <h3>₹ <%= product.price %></h3>
+
+                    <p><%= product.category %></p>
+
+                    <div class="wishlist-buttons">
+
+                        <a href="/product/<%= product._id %>">
+
+                            <button class="view-btn">
+
+                                View Product
+
+                            </button>
+
+                        </a>
+
+                        <a href="/cart/add/<%= product._id %>">
+
+                            <button class="cart-btn">
+
+                                Add To Cart
+
+                            </button>
+
+                        </a>
+
+                        <a href="/wishlist/remove/<%= product._id %>">
+
+                            <button class="remove-btn">
+
+                                Remove
+
+                            </button>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        <% }) %>
+
+        </div>
+
+    <% } %>
+
+</div>
+
+<%- include("partials/footer") %>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>

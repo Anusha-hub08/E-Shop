@@ -1,0 +1,127 @@
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title><%= product.name %></title>
+
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="/css/navbar.css">
+
+<link rel="stylesheet" href="/css/home.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+<body>
+<%- include("partials/navbar") %>
+
+<div class="product-page">
+
+    <div class="product-image">
+
+        <img src="<%= product.image %>" alt="<%= product.name %>">
+
+    </div>
+
+    <div class="product-info">
+
+        <span class="product-category">
+            <%= product.category %>
+        </span>
+
+        <h1><%= product.name %></h1>
+
+        <h2>₹ <%= product.price %></h2>
+
+        <p>
+            <%= product.description %>
+        </p>
+
+        <div class="product-buttons">
+
+            <a href="/cart/add/<%= product._id %>">
+                <button class="buy-btn">
+                    🛒 Add To Cart
+                </button>
+            </a>
+
+            <a href="/wishlist/add/<%= product._id %>">
+                <button class="wishlist-btn">
+                    ❤ Wishlist
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Review Section -->
+
+<div class="review-section">
+
+<h2>Write a Review</h2>
+
+<form action="/review/<%= product._id %>" method="POST">
+
+<label>Rating</label>
+
+<select name="rating">
+<option value="5">⭐⭐⭐⭐⭐</option>
+<option value="4">⭐⭐⭐⭐</option>
+<option value="3">⭐⭐⭐</option>
+<option value="2">⭐⭐</option>
+<option value="1">⭐</option>
+</select>
+
+<textarea
+name="comment"
+placeholder="Write your review..."
+required></textarea>
+
+<button type="submit">
+Submit Review
+</button>
+
+</form>
+
+</div>
+
+<div class="customer-reviews">
+
+<h2>Customer Reviews</h2>
+
+<% if(product.reviews.length===0){ %>
+
+<p>No Reviews Yet</p>
+
+<% } else { %>
+
+<% product.reviews.forEach(review=>{ %>
+
+<div class="review-card">
+
+<h3><%= review.user.name %></h3>
+
+<p class="rating">
+⭐ <%= review.rating %>/5
+</p>
+
+<p><%= review.comment %></p>
+
+</div>
+
+<% }) %>
+
+<% } %>
+
+</div>
+
+<%- include("partials/footer") %>
+<script src="/js/theme.js"></script>
+</body>

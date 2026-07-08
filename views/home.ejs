@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>E-Shop</title>
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<%- include("partials/navbar") %>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-left">
+
+<h4>🔥 Summer Sale 2026</h4>
+
+<h1>
+
+Upgrade Your Lifestyle<br>
+
+With Premium Products
+
+</h1>
+
+<p>
+
+Discover electronics, fashion, books, accessories and more.
+
+Save up to 50% today.
+
+</p>
+
+<a href="#products" class="shop-btn">
+
+Shop Now
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</a>
+
+</div>
+
+<div class="hero-right">
+
+<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1600&q=80">
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="feature-card">
+
+<i class="fa-solid fa-truck-fast"></i>
+
+<h3>Free Delivery</h3>
+
+<p>Orders Above ₹999</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-wallet"></i>
+
+<h3>Best Prices</h3>
+
+<p>Affordable Products</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<h3>Secure Payment</h3>
+
+<p>100% Safe</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-headset"></i>
+
+<h3>24/7 Support</h3>
+
+<p>Always Here</p>
+
+</div>
+
+</section>
+
+<!-- CATEGORIES -->
+
+<div class="categories-home">
+
+    <h2 class="category-title">
+        Shop By Category
+    </h2>
+
+<div class="category-grid">
+
+<a href="/?category=Electronics" class="category-card">
+
+<i class="fas fa-laptop"></i>
+
+<h3>Electronics</h3>
+
+<p>Mobiles • Laptops • Gadgets</p>
+
+</a>
+
+<a href="/?category=Fashion" class="category-card">
+
+<i class="fas fa-tshirt"></i>
+
+<h3>Fashion</h3>
+
+<p>Clothing • Shoes • Watches</p>
+
+</a>
+
+<a href="/?category=Accessories" class="category-card">
+
+<i class="fas fa-shopping-bag"></i>
+
+<h3>Accessories</h3>
+
+<p>Bags • Wallets • Jewelry</p>
+
+</a>
+
+<a href="/?category=Books" class="category-card">
+
+<i class="fas fa-book"></i>
+
+<h3>Books</h3>
+
+<p>Novels • Academic • Comics</p>
+
+</a>
+
+</div>
+</div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="products" id="products">
+
+<h2>🔥 Trending Products</h2>
+
+<p class="section-subtitle">
+Discover our most loved products picked just for you.
+</p>
+
+<div class="product-grid">
+
+<% products.forEach(product=>{ %>
+
+<div class="card">
+
+<div class="discount">
+
+20% OFF
+
+</div>
+
+<img src="<%= product.image %>">
+
+<div class="card-body">
+
+<h3>
+
+<a href="/product/<%= product._id %>" class="product-link">
+
+<%= product.name %>
+
+</a>
+
+</h3>
+
+<div class="stars">
+
+★★★★★
+
+<span>(4.9)</span>
+
+</div>
+
+<p>
+
+<%= product.description %>
+
+</p>
+
+<h2>
+
+₹ <%= product.price %>
+
+</h2>
+
+<div class="card-buttons">
+
+<a href="/product/<%= product._id %>">
+
+<button class="wish-btn">
+
+View Details
+
+</button>
+
+</a>
+
+<a href="/cart/add/<%= product._id %>">
+
+<button class="cart-btn">
+
+Add To Cart
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<% }) %>
+
+</div>
+
+</section>
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+<h2>
+
+Subscribe To E-Shop
+
+</h2>
+
+<p>
+
+Get Exclusive Deals & Offers
+
+</p>
+
+<form>
+
+<input
+
+type="email"
+
+placeholder="Enter your email">
+
+<button>
+
+Subscribe
+
+</button>
+
+</form>
+
+</section>
+
+<!-- ================= Testimonials ================= -->
+
+<section class="testimonials">
+
+    <h2>💬 What Our Customers Say</h2>
+
+    <p class="section-subtitle">
+        Thousands of happy customers trust E-Shop.
+    </p>
+
+    <div class="testimonial-grid">
+
+        <div class="testimonial-card">
+
+            <img src="https://i.pravatar.cc/120?img=15">
+
+            <h3>Rahul Sharma</h3>
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                Amazing quality products.
+                Fast delivery and excellent support.
+            </p>
+
+        </div>
+
+        <div class="testimonial-card">
+
+            <img src="https://i.pravatar.cc/120?img=25">
+
+            <h3>Priya Reddy</h3>
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                Shopping experience was fantastic.
+                Will definitely order again.
+            </p>
+
+        </div>
+
+        <div class="testimonial-card">
+
+            <img src="https://i.pravatar.cc/120?img=32">
+
+            <h3>Amit Kumar</h3>
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                Best prices compared to other websites.
+                Highly recommended.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<%- include("partials/footer") %>
+
+<button id="topBtn">
+    ↑
+</button>
+
+<script src="/js/script.js"></script>
+<script src="/js/slider.js"></script>
+<script src="/js/theme.js"></script>
+<script src="/js/topbutton.js"></script>
+
+</body>
+</html>
+
+</body>
+
+</html>

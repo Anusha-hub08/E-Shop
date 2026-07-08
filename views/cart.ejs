@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopping Cart</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<%- include("partials/navbar") %>
+
+<%
+let subtotal = 0;
+
+cartItems.forEach(item=>{
+    subtotal += item.product.price * item.quantity;
+});
+
+let shipping = subtotal > 5000 ? 0 : 99;
+let tax = Math.round(subtotal * 0.10);
+let total = subtotal + shipping + tax;
+%>
+
+<div class="cart-page">
+
+    <div class="cart-left">
+
+        <h1>🛒 Shopping Cart</h1>
+
+        <% if(cartItems.length===0){ %>
+
+            <div class="empty-cart">
+
+                <h2>Your Cart is Empty</h2>
+
+                <a href="/" class="continue-btn">
+
+                    Continue Shopping
+
+                </a>
+
+            </div>
+
+        <% } else { %>
+
+        <% cartItems.forEach(item=>{ %>
+
+        <div class="cart-card">
+
+            <img src="<%= item.product.image %>">
+
+            <div class="cart-details">
+
+                <h2><%= item.product.name %></h2>
+
+                <h3>₹ <%= item.product.price %></h3>
+
+                <p>Quantity : <%= item.quantity %></p>
+
+            </div>
+
+            <div class="cart-price">
+
+                ₹ <%= item.product.price * item.quantity %>
+
+            </div>
+
+            <a href="/cart/remove/<%= item._id %>">
+
+                <button class="remove-btn">
+
+                    🗑
+
+                </button>
+
+            </a>
+
+        </div>
+
+        <% }) %>
+
+        <% } %>
+
+    </div>
+
+    <% if(cartItems.length>0){ %>
+
+    <div class="order-summary">
+
+        <h2>Order Summary</h2>
+
+        <div class="summary-row">
+
+            <span>Subtotal</span>
+
+            <span>₹ <%= subtotal %></span>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Tax (10%)</span>
+
+            <span>₹ <%= tax %></span>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Shipping</span>
+
+            <span>
+
+                <% if(shipping==0){ %>
+
+                    Free
+
+                <% } else { %>
+
+                    ₹ <%= shipping %>
+
+                <% } %>
+
+            </span>
+
+        </div>
+
+        <hr>
+
+        <div class="summary-total">
+
+            <span>Total</span>
+
+            <span>₹ <%= total %></span>
+
+        </div>
+
+        <a href="/checkout">
+
+            <button class="checkout-btn">
+
+                Proceed to Checkout →
+
+            </button>
+
+        </a>
+
+        <a href="/" class="continue-shopping">
+
+            Continue Shopping
+
+        </a>
+
+    </div>
+
+    <% } %>
+
+</div>
+
+<%- include("partials/footer") %>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Orders</title>
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/navbar.css">
+
+</head>
+
+<body>
+
+<%- include("partials/navbar") %>
+
+<div class="orders-container">
+
+<h1>📦 My Orders</h1>
+
+<% if(orders.length===0){ %>
+
+<div class="empty-order">
+
+<h2>No Orders Yet</h2>
+
+<a href="/" class="continue-btn">
+Continue Shopping
+</a>
+
+</div>
+
+<% } else { %>
+
+<% orders.forEach(order=>{ %>
+
+<div class="order-card">
+
+<div class="order-header">
+
+<div>
+
+<h3>Order #<%= order._id.toString().slice(-6) %></h3>
+
+<p class="order-date">
+<%= new Date(order.createdAt).toDateString() %>
+</p>
+
+<span class="status">
+<%= order.status %>
+</span>
+
+</div>
+
+<h2>₹ <%= order.totalPrice %></h2>
+
+</div>
+
+<% order.products.forEach(item=>{ %>
+
+<div class="order-item">
+
+<img src="<%= item.product.image %>" alt="<%= item.product.name %>">
+
+<div class="order-info">
+
+<h3><%= item.product.name %></h3>
+
+<p>Quantity : <%= item.quantity %></p>
+
+</div>
+
+</div>
+
+<% }) %>
+
+</div>
+
+<% }) %>
+
+<% } %>
+
+</div>
+
+<%- include("partials/footer") %>
+
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<nav class="navbar">
+
+    <a href="/" class="logo">
+        🛒 <span>E-Shop</span>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="/#home">Home</a></li>
+        <li><a href="/#products">Products</a></li>
+
+        <li class="dropdown">
+
+    <a href="#" class="dropbtn">
+        Categories <span>▼</span>
+    </a>
+
+    <ul class="dropdown-menu">
+                <li><a href="/?category=Electronics">Electronics</a></li>
+                <li><a href="/?category=Fashion">Fashion</a></li>
+                <li><a href="/?category=Accessories">Accessories</a></li>
+                <li><a href="/?category=Books">Books</a></li>
+            </ul>
+        </li>
+
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+
+        <form action="/" method="GET" class="search-box">
+            <input
+                type="text"
+                name="search"
+                placeholder="Search..."
+                value="<%= typeof search !== 'undefined' ? search : '' %>"
+            >
+            <button>🔍</button>
+        </form>
+
+        <a href="#" id="themeToggle" class="icon">🌙</a>
+        <a href="/wishlist" class="icon">❤</a>
+        <a href="/cart" class="icon">🛒</a>
+        <a href="/orders" class="icon" >
+    📦
+</a>
+        <a href="/logout" class="icon">👤</a>
+
+    </div>
+
+</nav>

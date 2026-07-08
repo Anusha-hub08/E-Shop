@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>E-Shop | Register</title>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:linear-gradient(135deg,#2563eb,#1e3a8a);
+
+}
+
+.register-card{
+
+width:430px;
+
+background:rgba(18,24,45,.95);
+
+padding:45px;
+
+border-radius:20px;
+
+color:white;
+
+box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+.logo{
+
+width:65px;
+
+height:65px;
+
+background:#2563eb;
+
+margin:auto;
+
+border-radius:15px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:30px;
+
+font-weight:bold;
+
+}
+
+h2{
+
+text-align:center;
+
+margin-top:20px;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+margin:10px 0 35px;
+
+color:#aaa;
+
+}
+
+.input-box{
+
+position:relative;
+
+margin-bottom:22px;
+
+}
+
+.input-box i{
+
+position:absolute;
+
+left:15px;
+
+top:16px;
+
+color:#999;
+
+}
+
+.input-box input{
+
+width:100%;
+
+padding:15px 45px;
+
+border:none;
+
+outline:none;
+
+border-radius:10px;
+
+background:#27314f;
+
+color:white;
+
+font-size:16px;
+
+}
+
+.toggle{
+
+position:absolute;
+
+right:18px;
+
+top:16px;
+
+cursor:pointer;
+
+color:#aaa;
+
+}
+
+button{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+background:#2563eb;
+
+color:white;
+
+font-size:17px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#1d4ed8;
+
+}
+
+.login{
+
+margin-top:25px;
+
+text-align:center;
+
+}
+
+.login a{
+
+color:#4ea3ff;
+
+text-decoration:none;
+
+}
+
+@media(max-width:500px){
+
+.register-card{
+
+width:90%;
+
+padding:30px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="register-card">
+
+<div class="logo">
+
+E
+
+</div>
+
+<h2>Create Account</h2>
+
+<p class="subtitle">
+
+Join E-Shop Today
+
+</p>
+
+<form action="/register" method="POST">
+
+<div class="input-box">
+
+<i class="fa-solid fa-user"></i>
+
+<input
+type="text"
+name="name"
+placeholder="Enter Full Name"
+required>
+
+</div>
+
+<div class="input-box">
+
+<i class="fa-solid fa-envelope"></i>
+
+<input
+type="email"
+name="email"
+placeholder="Enter Email"
+required>
+
+</div>
+
+<div class="input-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+id="password"
+name="password"
+placeholder="Create Password"
+required>
+
+<i
+class="fa-solid fa-eye toggle"
+onclick="togglePassword()"></i>
+
+</div>
+
+<button>
+
+<i class="fa-solid fa-user-plus"></i>
+
+ Register
+
+</button>
+
+</form>
+
+<div class="login">
+
+Already have an account?
+
+<a href="/login">
+
+Login
+
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+function togglePassword(){
+
+let pass=document.getElementById("password");
+
+if(pass.type==="password")
+pass.type="text";
+else
+pass.type="password";
+
+}
+
+</script>
+
+</body>
+
+</html>
