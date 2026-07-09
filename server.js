@@ -1,4 +1,4 @@
-require("dotenv").config();
+
 const checkoutRoutes = require("./routes/checkoutRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const wishlistRoutes = require("./routes/wishlistRoutes");
@@ -13,8 +13,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const path = require("path");
 
-
-console.log(process.env.MONGO_URI);
+dotenv.config();
+console.log("MONGO URI Exists:", !!process.env.MONGO_URI);
 
 const connectDB = require("./config/db");
 
@@ -57,7 +57,9 @@ app.use("/", reviewRoutes);
 
 
 // View Engine
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+console.log("Views Path:", path.join(__dirname, "views"));
  app.use("/", authRoutes);
 
 // Home Route
